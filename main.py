@@ -30,7 +30,6 @@ def main():
         now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         seper = "-" * 19
         print("\n\n%s\n%s\n%s\n" % (seper, now, seper))
-        print('优化、翻译：游永全', end='\n\n')
         print('不要在此窗口进行任何操作，此窗口用于查看程序运行状态及错误分析\n请通过可视化交互界面设置实验参数或启动图像分析', end='\n\n')
 
         # 创建GUI应用程序和brain核心。

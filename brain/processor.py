@@ -60,6 +60,8 @@ warnings.filterwarnings("ignore")
 # 能够重现结果
 np.random.seed(0)
 random.seed(0)
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
+plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 
 
 def get_crop_shape(target, refer):
@@ -1191,7 +1193,7 @@ class ImageProcessor(threading.Thread):
                     )
         ax3.set_xlim([self.exp.start_img, self.exp.start_img + n_frames + 5])
         ax3.set_ylabel("面板编号")
-        ax3.set_title('发芽时间箱形图')
+        ax3.set_title('发芽均匀度箱形图')
         ax3.grid()
 
         if has_date:

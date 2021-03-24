@@ -4,7 +4,7 @@ import tkinter as Tkinter
 import sys
 
 about_text = """
-SeedGerm - Beta release（优化、翻译：游永全）
+SeedGerm - Beta release
 
 隶属: Crop Phenomics Group, Earlham Institute, Norwich Research Park, UK
 

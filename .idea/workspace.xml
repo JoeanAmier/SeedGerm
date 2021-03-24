@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24d76de8-0951-4f58-b3f1-94e543936b73" name="默认的" comment="数据可视化程序">
+    <list default="true" id="24d76de8-0951-4f58-b3f1-94e543936b73" name="默认的" comment="Update Code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/yuvranges.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/yuvranges.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brain/processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/brain/processor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/aboutwindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/aboutwindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,6 +213,26 @@
       <workItem from="1615353786061" duration="3682000" />
       <workItem from="1615360461366" duration="1987000" />
       <workItem from="1615375579332" duration="6353000" />
+      <workItem from="1615386429840" duration="198000" />
+      <workItem from="1615425548871" duration="185000" />
+      <workItem from="1615426589996" duration="3179000" />
+      <workItem from="1615448776665" duration="2569000" />
+      <workItem from="1615453350436" duration="169000" />
+      <workItem from="1615512038090" duration="20000" />
+      <workItem from="1615513603596" duration="43000" />
+      <workItem from="1615524805792" duration="103000" />
+      <workItem from="1615531823216" duration="250000" />
+      <workItem from="1615533332083" duration="633000" />
+      <workItem from="1615604250084" duration="172000" />
+      <workItem from="1615811476906" duration="356000" />
+      <workItem from="1616469866442" duration="300000" />
+      <workItem from="1616474393598" duration="2500000" />
+      <workItem from="1616476911100" duration="167000" />
+      <workItem from="1616481119419" duration="47000" />
+      <workItem from="1616487661917" duration="3475000" />
+      <workItem from="1616495031052" duration="1943000" />
+      <workItem from="1616502268707" duration="110000" />
+      <workItem from="1616562565976" duration="745000" />
     </task>
     <task id="LOCAL-00001" summary="Update Code">
       <created>1611628370439</created>
@@ -310,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615354653897</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Update Code">
+      <created>1615386500806</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1615386500806</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,91 +349,15 @@
     <option name="UPDATE_COPYRIGHT" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update Code" />
     <MESSAGE value="树莓派控制程序" />
     <MESSAGE value="数据可视化程序" />
-    <option name="LAST_COMMIT_MESSAGE" value="数据可视化程序" />
+    <MESSAGE value="Update Code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Code" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/brain/processor.py</url>
-          <line>1446</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/brain/processor.py</url>
-          <line>1448</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/brain/processor.py</url>
-          <line>1453</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/brain/processor.py</url>
-          <line>1456</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/brain/processor.py</url>
-          <line>1461</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/brain/processor.py</url>
-          <line>1464</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/brain/processor.py</url>
-          <line>1466</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/brain/processor.py</url>
-          <line>1468</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/brain/processor.py</url>
-          <line>1470</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/brain/processor.py</url>
-          <line>1475</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/brain/processor.py</url>
-          <line>1478</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/brain/processor.py</url>
-          <line>1481</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/brain/processor.py</url>
-          <line>1485</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/brain/processor.py</url>
-          <line>1488</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SeedGerm$demo.coverage" NAME="demo 覆盖结果" MODIFIED="1612016216680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SeedGerm$main.coverage" NAME="main 覆盖结果" MODIFIED="1615381246970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SeedGerm$main.coverage" NAME="main 覆盖结果" MODIFIED="1616562972512" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SeedGerm$image_test.coverage" NAME="image_test 覆盖结果" MODIFIED="1611927272356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SeedGerm$tinydb_test.coverage" NAME="tinydb_test 覆盖结果" MODIFIED="1612000765551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SeedGerm$pip.coverage" NAME="pip更新 覆盖结果" MODIFIED="1611992935290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
