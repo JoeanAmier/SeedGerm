@@ -87,7 +87,7 @@ class EditExperiment(Tkinter.Toplevel):
 
         self.bg_rm_label = Tkinter.Label(
             master=self,
-            text="背景算法: ",
+            text="背景移除算法: ",
             anchor=Tkinter.W
         )
         self.removers_var = Tkinter.StringVar(self)
