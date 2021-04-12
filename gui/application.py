@@ -277,8 +277,7 @@ class Application(Tkinter.Tk):
 
     def _get_exp_idx(self):
         item = self.treeview.selection()
-        index = self.treeview.index(item)
-        return index
+        return self.treeview.index(item)
 
     def _set_yuv_ranges(self):
         """设置YUV范围"""
@@ -387,7 +386,6 @@ class Application(Tkinter.Tk):
                     ax = fig.add_subplot(111)
                     ax.imshow(mask)
 
-                    m, n = mask.shape
                     ys, xs = [], []
                     for i, y, x in panel_seed_idxs[str(curr_panel)]:
                         if i == -1:
@@ -397,6 +395,7 @@ class Application(Tkinter.Tk):
                             xs.append(x)
                     if len(ys) and len(xs):
                         ax.scatter(xs, ys, c='r', s=40)
+                        m, n = mask.shape
                         ax.set_xlim(0, n)
                         ax.set_ylim(m, 0)
 

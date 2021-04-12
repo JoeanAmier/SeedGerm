@@ -54,16 +54,10 @@ def get_images_from_dir(path):
             jpg_files.append(_file)
         elif _file.endswith(".png"):
             png_files.append(_file)
-        else:
-            pass
-
         if re.findall('ID-(\d+)', _file):  # 匹配图像名称信息
             re_1 = True
         elif re.findall('_(\d+)\.', _file):
             re_2 = True
-        else:
-            pass
-
     if jpg_files and png_files:
         # print("Found both jpeg and png files in the directory....")
         print("图像文件夹内存在jpeg和png两种格式的图像")
@@ -74,7 +68,7 @@ def get_images_from_dir(path):
         print("图像文件夹内没有找到图像")
         return []
 
-    file_list = jpg_files if jpg_files else png_files
+    file_list = jpg_files or png_files
 
     try:
         if re_1:
@@ -93,7 +87,6 @@ def find_min_idx(x):
     for i, j in enumerate(x):
         if j == 1:
             return i
-            break
 
 
 def get_xy_range(l):
@@ -106,8 +99,7 @@ def get_xy_range(l):
     x_max = len(x) - find_min_idx(x[::-1])
     y_min = find_min_idx(y)
     y_max = len(y) - find_min_idx(y[::-1])
-    xy_range = [x_min, x_max, y_min, y_max]
-    return xy_range
+    return [x_min, x_max, y_min, y_max]
 
 
 def find_pts_in_range(pts, xy_range):
@@ -299,9 +291,7 @@ def find_closest_n_points(pts, desired_pts):
             [curr_x_low, curr_y_low]
         ]))
 
-        in_mask = []
-        for y, x in pts:
-            in_mask.append(bbPath.contains_point((x, y)))
+        in_mask = [bbPath.contains_point((x, y)) for y, x in pts]
         in_mask = np.array(in_mask)
 
         if in_mask.sum() == desired_pts:
@@ -347,11 +337,10 @@ def hours_between(start, end, round_minutes=False):
     delta_dt = end - start
     total_mins = divmod(delta_dt.total_seconds(), 60)[0]
     hr, mins = divmod(total_mins, 60)
-    if round_minutes:
-        min_extra = 1 if mins >= 30 else 0
-        return "%d" % (hr + min_extra)
-    else:
+    if not round_minutes:
         return "%d:%02d" % (hr, mins)
+    min_extra = 1 if mins >= 30 else 0
+    return "%d" % (hr + min_extra)
 
 
 def in_range(img, low, high):
@@ -465,8 +454,8 @@ def separate_seeds(curr_l, prev_l, indexes, curr_mask):
         sm_m = ndi.label(local_maxi)[0]
 
         markers[sm_m > 0] = sm_m[sm_m > 0] + count  # + 1
-        count = count + sm_m.ravel().max()
-        s_lm = s_lm + [sm_m.ravel().max()]
+        count += sm_m.ravel().max()
+        s_lm += [sm_m.ravel().max()]
 
     # markers[1,1] = 1
 
@@ -481,7 +470,7 @@ def separate_seeds(curr_l, prev_l, indexes, curr_mask):
         for j in range(count, s_lm[i] + count):
             curr_l[labels == j] = indexes[i]
 
-        count = count + s_lm[i]
+        count += s_lm[i]
 
     return curr_l
 

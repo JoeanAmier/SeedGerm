@@ -140,9 +140,7 @@ def create_unet(img_shape, num_class):
     conv9 = layers.ZeroPadding2D(padding=((ch[0], ch[1]), (cw[0], cw[1])))(conv9)
     conv10 = layers.Conv2D(num_class, (1, 1), activation='softmax')(conv9)
 
-    model = models.Model(inputs=inputs, outputs=conv10)
-
-    return model
+    return models.Model(inputs=inputs, outputs=conv10)
 
 
 def compare_pts(pt1, pt2):
@@ -202,8 +200,7 @@ class ImageProcessor(threading.Thread):
             print("如果您有信心，可以考虑在配置中添加新的品种参数")
 
     def _run_check(self):
-        if not self.running:
-            pass
+        pass
 
     def _save_init_image(self, img):
         # 保存实验的初始RGB图像
@@ -373,8 +370,7 @@ class ImageProcessor(threading.Thread):
         alpha_tiled = np.repeat(alpha.reshape(alpha.shape[0], 1), 3, axis=1)
         inner = np.power((X - (E * alpha_tiled)) / s, 2)
         all_NCD = np.sqrt(np.sum(inner, axis=1)) / b
-        TCD = np.percentile(all_NCD, 99.75)
-        return TCD
+        return np.percentile(all_NCD, 99.75)
 
     def _train_gmm_clfs(self):
         gmm_clf_f = pj(self.exp_gzdata_dir, "gmm_clf.pkl")
@@ -465,8 +461,7 @@ class ImageProcessor(threading.Thread):
             self.all_masks.append(img_masks)
 
     def _ensemble_predict(self, clfs, X, p):
-        y_pred = clfs[p.label - 1].predict(X)
-        return y_pred
+        return clfs[p.label - 1].predict(X)
 
     def _train_clfs(self, clf_in):
         print("分类器：", self.exp.bg_remover)
@@ -775,11 +770,23 @@ class ImageProcessor(threading.Thread):
             labelled_array, num_features = measurements.label(mask_med)
             rprops = regionprops(labelled_array, coordinates='xy')
 
-            all_seed_rprops = []  # type: List[SeedPanel]
-            for rp in rprops:
-                all_seed_rprops.append(
-                    SeedPanel(rp.label, rp.centroid, rp.bbox, rp.moments_hu, rp.area, rp.perimeter, rp.eccentricity,
-                              rp.major_axis_length, rp.minor_axis_length, rp.solidity, rp.extent, rp.convex_area))
+            all_seed_rprops = [
+                SeedPanel(
+                    rp.label,
+                    rp.centroid,
+                    rp.bbox,
+                    rp.moments_hu,
+                    rp.area,
+                    rp.perimeter,
+                    rp.eccentricity,
+                    rp.major_axis_length,
+                    rp.minor_axis_length,
+                    rp.solidity,
+                    rp.extent,
+                    rp.convex_area,
+                )
+                for rp in rprops
+            ]
 
             # 获取最大种子数
             pts = np.vstack([el.centroid for el in all_seed_rprops])
@@ -837,7 +844,7 @@ class ImageProcessor(threading.Thread):
         minimum_areas = []
         self.end_idx = np.full(len(self.panel_list), self.exp.end_img)
 
-        for idx in tqdm(range(0, len(self.all_masks))):
+        for idx in tqdm(range(len(self.all_masks))):
             self.panel_l_rprops_1 = []
             fig, axarr = plt.subplots(self.exp.panel_n, 1, figsize=(16, 16 * self.exp.panel_n))
             for ipx, panel in enumerate(self.panel_list):
@@ -950,9 +957,7 @@ class ImageProcessor(threading.Thread):
                 self.all_rprops = pickle.load(fh)
         for j in range(len(self.all_rprops)):
             x = self.all_rprops[j]
-            n_seeds = 0
-            for p in range(len(x)):
-                n_seeds += len(x[p][1])
+            n_seeds = sum(len(x[p][1]) for p in range(len(x)))
             X_stats = np.zeros((n_seeds, 10))
             counter = 0
             for i in range(len(x)):
@@ -961,7 +966,7 @@ class ImageProcessor(threading.Thread):
                     X_stats[counter, :] = [i + 1, k + 1, x0[k].area, x0[k].eccentricity, x0[k].extent,
                                            x0[k].major_axis_length, x0[k].minor_axis_length, x0[k].perimeter,
                                            x0[k].solidity, x0[k].convex_area]
-                    counter = counter + 1
+                    counter += 1
             self.total_stats.append(X_stats)
         seed_stats = np.zeros((1, 11))
         for i in range(len(self.total_stats)):
@@ -1056,10 +1061,7 @@ class ImageProcessor(threading.Thread):
                 if len(germ_d) == 0:
                     continue
 
-                germinated = []
-                for j in range(1, len(germ_d.keys()) + 1):
-                    germinated.append(germ_d[str(j)])
-
+                germinated = [germ_d[str(j)] for j in range(1, len(germ_d.keys()) + 1)]
                 germinated = np.vstack(germinated)
                 all_germ.append(germinated)
 
@@ -1069,17 +1071,16 @@ class ImageProcessor(threading.Thread):
             l, rprop = self.all_rprops[0][i]
             p_totals.append(len(rprop))
 
-        if len(all_germ) == 0:
+        if not all_germ:
             raise Exception("找到的发芽种子为0。尝试更改YUV值。")
 
         print(p_totals)
 
-        cum_germ_data = []
-
         np.save(self.exp_results_dir + '/all_germ.npy', all_germ)
 
-        for germ in all_germ:
-            cum_germ_data.append(self._get_cumulative_germ(germ, win=4)[0])
+        cum_germ_data = [
+            self._get_cumulative_germ(germ, win=4)[0] for germ in all_germ
+        ]
 
         initial_germ_time_data = []
 
@@ -1108,11 +1109,7 @@ class ImageProcessor(threading.Thread):
         p_t_text = ""
         for i in range(self.exp.panel_n):
             p_t_text += "panel %d: %d" % (i + 1, p_totals[i])
-            if ((i + 1) % 2) == 0:
-                p_t_text += "\n"
-            else:
-                p_t_text += "    "
-
+            p_t_text += "\n" if ((i + 1) % 2) == 0 else "    "
         plt.figtext(0.05, 0.93, p_t_text)
 
         # 仅当文件名中包含日期信息时才使用
@@ -1285,9 +1282,7 @@ class ImageProcessor(threading.Thread):
             with open(pj(self.exp_results_dir, "germ_panel_%d.json" % (p_idx))) as fh:
                 germ_d = json.load(fh)
 
-            germinated = []
-            for j in range(1, len(germ_d.keys()) + 1):
-                germinated.append(germ_d[str(j)])
+            germinated = [germ_d[str(j)] for j in range(1, len(germ_d.keys()) + 1)]
             germinated = np.vstack(germinated)
 
             cum_germ = self._get_cumulative_germ(germinated, win=7)[0].astype('f')
@@ -1346,9 +1341,9 @@ class ImageProcessor(threading.Thread):
             'avg_eccentricity',
             'avg_initial_rgb',
             'avg_final_rgb',
+            *['germ_%d%%' % (100 * prop) for prop in proprtions],
+            'total_germ_%',
         ]
-        columns.extend(['germ_%d%%' % (100 * prop) for prop in proprtions])
-        columns.append('total_germ_%')
 
         df = pd.DataFrame(all_panel_data, columns=columns)
         df.to_csv(pj(self.exp_results_dir, "overall_results.csv"), index=False)
@@ -1365,9 +1360,7 @@ class ImageProcessor(threading.Thread):
             with open(pj(self.exp_results_dir, "germ_panel_%d.json" % (p_idx))) as fh:
                 germ_d = json.load(fh)
 
-            germinated = []
-            for j in range(1, len(germ_d.keys()) + 1):
-                germinated.append(germ_d[str(j)])
+            germinated = [germ_d[str(j)] for j in range(1, len(germ_d.keys()) + 1)]
             germinated = np.vstack(germinated)
 
             cum_germ, germ_proc = self._get_cumulative_germ(germinated, win=7)
@@ -1501,10 +1494,6 @@ class ImageProcessor(threading.Thread):
 
             except Exception as e:
                 raise e
-                self.exp.status = "异常"
-                self.app.status_string.set("处理时发生异常")
-                print("异常参数：" + str(e.args))
-
             self.running = False
 
             self.core.stop_processor(self.exp.eid)

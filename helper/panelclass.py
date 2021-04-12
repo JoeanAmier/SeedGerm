@@ -17,8 +17,7 @@ class Panel:
 
     def get_bbox_image(self, img):
         min_row, min_col, max_row, max_col = self.bbox
-        cropped_img = img[min_row:max_row, min_col:max_col]
-        return cropped_img
+        return img[min_row:max_row, min_col:max_col]
 
     def get_cropped_image(self, img):
         min_row, min_col, max_row, max_col = self.bbox

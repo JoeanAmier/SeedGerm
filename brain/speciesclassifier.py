@@ -253,14 +253,10 @@ class SpeciesClassifier:
 
         row_max, col_max = self.panel_masks[0].shape
 
-        if min_row < 0:
-            min_row = 0
-        if min_col < 0:
-            min_col = 0
-        if max_row > row_max:
-            max_row = row_max
-        if max_col > col_max:
-            max_col = col_max
+        min_row = max(min_row, 0)
+        min_col = max(min_col, 0)
+        max_row = min(max_row, row_max)
+        max_col = min(max_col, col_max)
 
         seed_masks = [el[min_row:max_row, min_col:max_col] for el in self.panel_masks[:len(self.all_imgs)]]
 
@@ -406,7 +402,7 @@ class SpeciesClassifier:
                 # average_pred = ((color_preds + hu_preds) / 2) < self.combined_prob_low #GMM
 
                 color_preds = self.clf_color.predict(color_feas)
-                average_pred = ((color_preds + hu_preds) / 2) <= 0
+                average_pred = color_preds + hu_preds <= 0
 
             else:
                 # average_pred = hu_preds < self.combined_prob_low #GMM
@@ -423,8 +419,7 @@ class SpeciesClassifier:
 
             img_ten_percent = int(len(seed_masks) * 0.1)
             img_start = np.argmax(areas > (area_mu * self.area_growth_min)) - img_ten_percent
-            if img_start < 0:
-                img_start = 0
+            img_start = max(img_start, 0)
 
             seed_area_mask = np.array([0] * len(seed_masks))
             seed_area_mask[img_start:] = 1
