@@ -1,5 +1,5 @@
 # @Author : 游永全
-# @Date : 2021/3/10
+# @Date : 2021/4/20
 # @Edition : Python3
 # @System : Raspberry_Pi
 from picamera import PiCamera
@@ -15,5 +15,5 @@ with PiCamera() as camera:
     date = str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
     path = root + date + '.jpg'
     camera.capture(path)
-    print('已拍摄照片：' + date)
+    print('已拍摄图像：' + date)
     camera.stop_preview()

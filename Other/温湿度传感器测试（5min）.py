@@ -35,7 +35,7 @@ def main():
     while True:
         try:
             sensor()
-            time.sleep(5)
+            time.sleep(295)
         except KeyboardInterrupt:
             break
     print('程序已关闭')
