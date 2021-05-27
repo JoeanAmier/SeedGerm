@@ -8,10 +8,10 @@ Created on Tue Jan 12 14:31:56 2016
 
 import json
 import tkinter as Tkinter
+import warnings
 from itertools import chain
 from operator import itemgetter
 from tkinter import messagebox
-import sys
 
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -25,7 +25,6 @@ from skimage.transform import rescale
 from helper.experiment import Experiment
 from helper.functions import *
 from helper.panel_segmenter import fill_border
-import warnings
 
 warnings.filterwarnings("ignore")
 

@@ -1,31 +1,33 @@
 # -*- coding: utf-8 -*-
 
-import shutil
-import os
-import tkinter as Tkinter
-from tkinter import ttk
-import collections
-from tkinter import messagebox
-from tkinter import filedialog
-import glob
-import sys
-from matplotlib import pyplot as plt
-import numpy as np
-import json
 import _thread
-from helper.functions import get_images_from_dir
-from gui.paneltool import PanelTool
+import collections
+import glob
+import json
+import os
+import shutil
+import sys
+import tkinter as Tkinter
+import warnings
+from tkinter import filedialog
+from tkinter import messagebox
+from tkinter import ttk
+
+import numpy as np
+from matplotlib import pyplot as plt
+from tinydb import Query
+
+from gui.aboutwindow import AboutWindow
 from gui.addexperiment import AddExperiment
 from gui.editexperiment import EditExperiment
+from gui.germinationviewer import GerminationViewer
 from gui.imageviewer import ImageViewer
+from gui.maskviewer import MaskViewer
+from gui.paneltool import PanelTool
 from gui.viewresults import ViewResults
 from gui.yuvranges import YUVRanges, YUVPanelRanges
-from gui.aboutwindow import AboutWindow
-from gui.maskviewer import MaskViewer
-from gui.germinationviewer import GerminationViewer
 from helper.experiment import Experiment
-import warnings
-from tinydb import Query
+from helper.functions import get_images_from_dir
 
 warnings.filterwarnings("ignore")
 

@@ -3,7 +3,6 @@
 
 import json
 import os
-import sys
 import tkinter as Tkinter
 
 import matplotlib.pyplot as plt

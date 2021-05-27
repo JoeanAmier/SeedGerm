@@ -8,15 +8,12 @@ Created on Mon Jan 18 10:11:47 2016
 import os
 
 import numpy as np
-import tqdm
 from imageio import imread
 from skimage.measure import regionprops
 from skimage.morphology import dilation
 from skimage.morphology import disk
 from sklearn import svm
-import time
 
-from helper.functions import delta
 from helper.functions import simple_label_next_frame
 
 # from pomegranate import *

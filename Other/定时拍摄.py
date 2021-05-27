@@ -1,12 +1,13 @@
 # @Author : 游永全
-# @Date : 2021/4/20
+# @Date : 2021/5/27
 # @Edition : Python3
 # @System : Raspberry_Pi
-import os
-import smbus
-import time
-from picamera import PiCamera
 import csv
+import os
+import time
+
+import smbus
+from picamera import PiCamera
 
 
 def start(_name, _experiment, number):
@@ -20,7 +21,7 @@ def start(_name, _experiment, number):
         progress = 0
         while True:
             camera.start_preview()
-            time.sleep(5)
+            time.sleep(10)
             date = time.strftime("%d-%m-%Y_%H-%M", time.localtime(time.time()))
             path = root + _experiment + '_ID-' + \
                    str(progress) + '_Data-' + date + '.jpg'
@@ -37,7 +38,7 @@ def start(_name, _experiment, number):
             progress += 1
             if progress == number:
                 break
-            time.sleep(3590)
+            time.sleep(3585)
         print('定时拍摄结束')
 
 

@@ -20,12 +20,35 @@ a.  需要用户设置YUV范围。
 import copy
 import glob
 import json
-# General python imports.
-from tqdm import tqdm
-import pandas as pd
 import pickle
 import threading
 import traceback
+import warnings
+from itertools import chain
+from operator import itemgetter
+
+import pandas as pd
+from imageio import imread
+from keras import layers
+from keras import models
+from keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
+from keras.models import load_model
+from keras.optimizers import Adam
+from keras.utils import to_categorical
+from matplotlib import pyplot as plt
+from numpy import random
+# Imaging/vision imports.
+from scipy.ndimage.morphology import binary_fill_holes
+# 机器学习和统计。
+from skimage.morphology import *
+from skimage.segmentation import clear_border
+from skimage.transform import resize
+from sklearn.linear_model import SGDClassifier
+from sklearn.mixture import GaussianMixture
+from sklearn.model_selection import train_test_split
+# General python imports.
+from tqdm import tqdm
+
 from helper.experiment import Experiment
 from helper.functions import *
 # Germapp imports.
@@ -33,27 +56,6 @@ from helper.horprasert import *
 from helper.panel_segmenter import fill_border
 from helper.panelclass import Panel
 from helper.seedpanelclass import SeedPanel
-from itertools import chain
-from matplotlib import pyplot as plt
-from numpy import random
-from operator import itemgetter
-# Imaging/vision imports.
-from scipy.ndimage.morphology import binary_fill_holes
-from skimage.transform import resize
-# 机器学习和统计。
-from skimage.morphology import *
-from skimage.segmentation import clear_border
-from sklearn.linear_model import SGDClassifier
-from sklearn.mixture import GaussianMixture
-from sklearn.model_selection import train_test_split
-from keras import layers
-from keras import models
-from keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
-from keras.models import load_model
-from keras.optimizers import Adam
-from keras.utils import to_categorical
-from imageio import imread
-import warnings
 
 warnings.filterwarnings("ignore")
 

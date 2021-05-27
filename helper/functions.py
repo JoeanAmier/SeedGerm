@@ -6,11 +6,11 @@ Created on Thu Oct 29 13:10:05 2015
 """
 
 import datetime
+import math
 import os
 import re
 import time
 
-import math
 import numpy as np
 from matplotlib.path import Path
 from scipy import ndimage as ndi

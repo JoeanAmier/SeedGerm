@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import tkinter as Tkinter
-import sys
+
 from gui.maskviewer import MaskViewer
 
 

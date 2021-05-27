@@ -2,9 +2,10 @@
 # @Date : 2021/4/20
 # @Edition : Python3
 # @System : Raspberry_Pi
-import smbus
-import time
 import csv
+import time
+
+import smbus
 
 
 def sensor():

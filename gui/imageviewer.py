@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import os
-import sys
 import tkinter as Tkinter
+
 import matplotlib.pyplot as plt
 from imageio import imread
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg

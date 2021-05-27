@@ -2,15 +2,14 @@
 # -*- coding: utf-8 -*-
 
 import os
-import sys
 import tkinter as Tkinter
 from tkinter import filedialog
 from tkinter import messagebox
-from tinydb import where
-from helper.functions import slugify, get_images_from_dir
-from helper.experiment import Experiment
-from tinydb import TinyDB
+
 from tinydb import Query
+
+from helper.experiment import Experiment
+from helper.functions import slugify, get_images_from_dir
 
 pj = os.path.join
 

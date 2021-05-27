@@ -50,6 +50,7 @@ If you wish to run SeedGerm from the code, you will need to set up Python on you
         Keras
         tinydb
         scipy
+        seaborn
 
    To install these in your environment, check out: https://conda.io/docs/user-guide/tasks/manage-pkgs.html
 

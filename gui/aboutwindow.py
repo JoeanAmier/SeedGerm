@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import tkinter as Tkinter
-import sys
 
 about_text = """
 SeedGerm - Beta release

@@ -6,15 +6,14 @@
 进一步用于执行任何繁重的处理，以便在用户与应用程序交互时GUI线程不会挂起。
 """
 
+import glob
+import json
+import os
 import threading
 import time
-import sys
 import zipfile
-import os
-import glob
 
 from brain.processor import ImageProcessor
-import json
 from brain.speciesclassifier import SpeciesClassifier
 
 
